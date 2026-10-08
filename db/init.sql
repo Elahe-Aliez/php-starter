@@ -1,0 +1,19 @@
+-- The tables of the project.
+--
+-- MySQL runs this file one time, when the database container starts for the first time.
+-- After you change this file, build the database again:
+--
+--   docker compose down -v
+--   docker compose up -d
+--
+-- Write your CREATE TABLE and INSERT statements below. Example:
+--
+-- CREATE TABLE notes (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     title VARCHAR(200) NOT NULL,
+--     body TEXT NOT NULL,
+--     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+-- );
+--
+-- INSERT INTO notes (title, body) VALUES
+--     ('First note', 'Hello from the database');

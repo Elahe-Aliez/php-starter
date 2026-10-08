@@ -1,0 +1,38 @@
+# Start everything:   docker compose up -d --build
+# Open the app:       http://localhost:8080
+# Stop everything:    docker compose down
+
+services:
+  # The PHP app.
+  app:
+    build: .
+    ports:
+      - "8080:8000"
+    volumes:
+      # Share the project folder with the container: code changes show at once.
+      - .:/app
+    environment:
+      APP_DEBUG: "1"
+      # host=db is the name of the database service below.
+      DB_DSN: "mysql:host=db;dbname=app;charset=utf8mb4"
+      DB_USER: app
+      DB_PASSWORD: secret
+    depends_on:
+      - db
+
+  # The MySQL database.
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: secret
+    volumes:
+      # Keep the data when the container is deleted.
+      - db_data:/var/lib/mysql
+      # MySQL runs this file at its first start.
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  db_data:

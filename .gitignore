@@ -1,0 +1,11 @@
+# Packages installed by Composer. Build them again with "composer install".
+/vendor/
+
+# Files that PHPUnit creates.
+/.phpunit.cache/
+.phpunit.result.cache
+
+# Editor and system files.
+/.idea/
+/.vscode/
+.DS_Store
